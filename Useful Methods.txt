@@ -1,0 +1,124 @@
+Useful Methods
+
+JavaScriptExecutor
+JavascriptExecutor js = (JavascriptExecutor)driver;
+js.executeScript("arguments[0].click();", riskoverview_setting_icon);
+
+Scroll
+	public void ScrollToElement(WebElement element) {
+		js.executeScript("arguments[0].scrollIntoView();", element);
+	}
+Grid Traverse
+public void VerifyEucByName() {
+		helper = new Helper();
+		helper.HardWait(3000);
+		
+		logger.info("In VerifyEucByName");
+		WebElement table = driver.findElement(By.xpath("//tbody[@class='p-grid-content-data']"));
+		List<WebElement> listOfRows = table.findElements(By.tagName("tr"));
+		int rowCount = listOfRows.size();
+		System.out.println("Rows: "+rowCount);
+		List<WebElement> listOfCols = listOfRows.get(0).findElements(By.tagName("td"));
+		int colCount = listOfCols.size();
+		System.out.println("Columns: "+colCount);
+		for (int i = 1; i <= rowCount; i++)
+		{
+			String name = driver.findElement(By.xpath("//tbody[@class='p-grid-content-data']/tr["+i+"]/td[4]")).getText();			
+			if (name.equals(Eucname)) {
+				Assert.assertEquals(name, Eucname);
+				System.out.println("Added Euc Found");
+				break;
+			} else {
+				System.out.println("Added Euc not found");
+			}
+		}	
+		logger.error("Error In VerifyEucByName");
+	}
+	------------------------
+		/*public void GridTraverse()	{
+//		List<WebElement> listOfRows = managedepartments_grid_data;
+//	    int rowscount = managedepartments_grid_data.g
+//	    int columnscount = managedepartments_grid_data.Columns.Count;
+		//managedepartments_grid_data.s
+
+		WebElement table = managedepartments_grid_data;
+
+			List<WebElement> listOfRows = table.findElements(By.tagName("tr"));
+
+			System.out.println("Rows: "+listOfRows.size());
+			int rowCount = listOfRows.size();
+			System.out.println(rowCount);
+			List<WebElement> listOfCols = listOfRows.get(0).findElements(By.tagName("td")); //If first row is normal row
+
+			//List<WebElement> listOfCols = listOfRows.get(0).findElements(By.tagName("th")); //If first row is header row
+
+			System.out.println("Columns: "+listOfCols.size());
+			int colCount = listOfCols.size();
+			System.out.println(rowCount);
+	    for (int i = 0; i < rowCount; i++)
+	    {
+	        for (int j = 1; j < colCount; j++)
+	        {
+	            System.out.println(j);
+	            for (int k=j;k<=j;k++) {
+	            	String startxpath = "//tbody[@class='p-grid-content-data']//tr[";
+	            	String endxpath = "]//td";
+	            	String delendxpath = "//td[5]";
+	            	String middlexpath = Integer.toString(j);
+	            	String fullxpath = startxpath+middlexpath+endxpath;
+	            	String fulldelpath = startxpath+middlexpath+delendxpath;
+	            	String departmentname = driver.findElement(By.xpath(fullxpath)).getText();
+	            	if(departmentname.contentEquals("CIMCON-SQA")) {
+	            		driver.findElement(By.xpath(fulldelpath)).click();
+	            	}
+	            }
+	        	//String departmentText = driver.findElement(By.xpath("//tbody[@class='p-grid-content-data']//tr[2]//td")).getText();
+
+	        }
+	    }       
+	}
+	 */
+	//need to update for more specific to the text 
+//	public boolean VerifyAlertPopUp() {
+//		logger.info("In VerifyAlertPopUp");
+//		System.out.println("Aler MSG ?");
+//		try {
+//			Alert alert = driver.switchTo().alert();
+//			String alertText = alert.getText();
+//			System.out.println(alertText);
+//			return true;
+//		}catch(NoAlertPresentException ex){
+//			return false;
+//		}
+//	}
+
+WebDriverWait wait = new WebDriverWait(driver, 20);
+wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath(".//*[@id='home']/div/div[1]/div/div/a/strong")));
+				
+				
+upload File with robot
+public static void uploadFileWithRobot(String path) {
+		StringSelection stringSelection = new StringSelection(path);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(stringSelection, null);
+
+		Robot robot = null;
+
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+
+		robot.delay(250);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.delay(150);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+	}
