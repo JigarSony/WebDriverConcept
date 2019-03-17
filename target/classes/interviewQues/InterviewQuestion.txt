@@ -1,0 +1,18 @@
+Exceptions:: Checked and Unchecked (IO and File)
+https://www.javatpoint.com/exception-handling-in-java
+Why Main method is public static
+http://cs-fundamentals.com/tech-interview/java/why-does-main-method-have-to-be-static.php
+What is difference/better/Why between xpath and css
+SendKeys alternative
+https://www.quora.com/What-are-the-other-alternate-ways-for-sending-keys-in-Selenium
+Cucumber Runner files all tags monochrome and all
+how to double/right click
+https://www.guru99.com/double-click-and-right-click-selenium.html
+Difference between 
+WebDriver driver = new ChromeDriver();
+ChromeDriver driver = new ChromeDriver();
+https://www.softwaretestingmaterial.com/webdriver-driver-new-firefoxdriver/
+Static and NonStatic Integer
+
+https://artoftesting.com/interviewSection/selenium-interview-questions-part3.html
+http://cs-fundamentals.com/java-programming/java-programming-tutorials.php
